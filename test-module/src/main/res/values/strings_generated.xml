@@ -1,0 +1,10 @@
+<resources>
+<string name="ampersand">You &amp; Me</string>
+<string name="button_cancel">Cancel</string>
+<string name="button_save">Save</string>
+<string name="ellipsis">More…</string>
+<string name="fries">French fries</string>
+<string name="hello">Hello World!</string>
+<string name="placeholder_numbers">From %1$d to %2$d</string>
+<string name="placeholder_string">Value: %1$s</string>
+</resources>

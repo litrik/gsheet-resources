@@ -1,0 +1,19 @@
+[versions]
+caupain = "1.5.1"                       # https://github.com/deezer/caupain/releases
+compatPatrouille = "0.0.2"              # https://github.com/GradleUp/compat-patrouille/releases
+csv = "1.10.0"                          # https://github.com/jsoizo/kotlin-csv/releases
+gradlePluginPublish = "1.3.1"           # https://plugins.gradle.org/plugin/com.gradle.plugin-publish
+junit = "4.13.2"                        # https://docs.junit.org/current/release-notes/index.html#release-notes
+kotlin = "2.2.10"                       # https://kotlinlang.org/docs/releases.html
+mavenPublish = "0.34.0"                 # https://github.com/vanniktech/gradle-maven-publish-plugin/releases
+
+[libraries]
+csv = { module = "com.jsoizo:kotlin-csv-jvm", version.ref = "csv" }
+junit = { module = "junit:junit", version.ref = "junit" }
+
+[plugins]
+caupain = { id = "com.deezer.caupain", version.ref = "caupain" }
+compatPatrouille = { id = "com.gradleup.compat.patrouille", version.ref = "compatPatrouille" }
+gradlePluginPublish = { id = "com.gradle.plugin-publish", version.ref = "gradlePluginPublish" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
