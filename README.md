@@ -83,7 +83,7 @@ I recommend to add the generated files into version control. You can rerun the a
 This is a [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM/edit?gid=0#gid=0).
 
 | ID                    | en                | nl                | nl-rBE    |
-! --------------------- | ----------------- | ----------------- | --------- |
+|-----------------------| ----------------- | ----------------- | --------- |
 | hello                 | Hello World!      | Hallo Wereld!     |           |
 | button_save           | Save              | Bewaren           |           |
 | button_cancel         | Cancel            | Annuleren         |           |
