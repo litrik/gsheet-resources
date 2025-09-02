@@ -1,7 +1,9 @@
 
-gsheet-resources
+# gsheet-resources
 
 ![GitHub License](https://img.shields.io/github/license/litrik/gsheet-resources)
+
+![Logo](resources/logo.png)
 
 ## What's this?
 
