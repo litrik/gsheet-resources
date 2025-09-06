@@ -26,18 +26,15 @@ package be.norio.gsheetresources
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.TaskAction
 
 open class GsheetResourcesTask : DefaultTask() {
     @get:Input
     val sheetId = project.objects.property(String::class.java)
 
-    @Optional
     @get:Input
     val resourceDir = project.objects.property(String::class.java)
 
-    @Optional
     @get:Input
     val outputFilename = project.objects.property(String::class.java)
 
@@ -45,8 +42,8 @@ open class GsheetResourcesTask : DefaultTask() {
     fun generateTranslations() {
         val translations = Parser().parse(Util.readGoogleSheet(sheetId.get()))
         AndroidWriter(
-            resourceDir = resourceDir.orNull ?: AndroidWriter.DEFAULT_RESOURCE_DIR,
-            outputFilename = outputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME,
+            resourceDir = resourceDir.get(),
+            outputFilename = outputFilename.get(),
         ).writeAllLanguages(translations)
     }
 

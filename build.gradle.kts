@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.compatPatrouille) apply false
 }
 
-val currentVersion = "0.1.0"
+val currentVersion = "0.2.0"
 version = buildString {
     append(currentVersion)
 }

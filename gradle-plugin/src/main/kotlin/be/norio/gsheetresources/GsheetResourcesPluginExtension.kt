@@ -28,5 +28,6 @@ import org.gradle.api.provider.Property
 
 interface GsheetResourcesPluginExtension {
     val sheetId: Property<String>
+    val resourceDir: Property<String>
     val outputFilename: Property<String>
 }

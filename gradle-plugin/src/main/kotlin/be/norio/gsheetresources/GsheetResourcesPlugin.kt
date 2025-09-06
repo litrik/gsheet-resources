@@ -37,9 +37,14 @@ open class GsheetResourcesPlugin : Plugin<Project> {
 
         target.tasks.register("generateSheetResources", GsheetResourcesTask::class.java) {
             it.description = "Generate string resource files from a Google Sheet."
+
             it.sheetId.set(ext.sheetId.get())
-            it.resourceDir.set(target.layout.projectDirectory.dir(AndroidWriter.DEFAULT_RESOURCE_DIR).asFile.path)
-            it.outputFilename.set(ext.outputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME)
+
+            val resourceDir = ext.resourceDir.orNull ?: AndroidWriter.DEFAULT_RESOURCE_DIR
+            it.resourceDir.set(target.layout.projectDirectory.dir(resourceDir).asFile.path)
+
+            val outputFilename = ext.outputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME
+            it.outputFilename.set(outputFilename)
         }
     }
 

@@ -19,7 +19,7 @@ mavenPublishing {
     signAllPublications()
     pom {
         name = "Google Sheet to Resources core library"
-        description = "Tool to generate string resource files for an Android app from a Google Sheet. This is the core library used by the Gradle plugin."
+        description = "Tool to generate string resource files for Android and KMP apps from a Google Sheet. This is the core library used by the Gradle plugin."
         inceptionYear = "2025"
         url = "https://github.com/litrik/gsheet-resources"
         licenses {

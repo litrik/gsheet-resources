@@ -24,7 +24,7 @@ gradlePlugin {
         create("gsheetResources") {
             id = "be.norio.gsheet-resources"
             displayName = "Generate string resource files from a Google Sheet"
-            description = "Plugin to generate string resource files for an Android app from a Google Sheet"
+            description = "Plugin to generate string resource files for Android and KMP apps from a Google Sheet"
             tags = listOf("android", "translations")
             implementationClass = "be.norio.gsheetresources.GsheetResourcesPlugin"
         }
@@ -40,7 +40,7 @@ mavenPublishing {
     }
     pom {
         name = "Google Sheet to Resources Gradle plugin"
-        description = "Gradle plugin to generate string resource files for an Android app from a Google Sheet."
+        description = "Gradle plugin to generate string resource files for Android and KMP apps from a Google Sheet."
         inceptionYear = "2025"
         url = "https://github.com/litrik/gsheet-resources"
         licenses {

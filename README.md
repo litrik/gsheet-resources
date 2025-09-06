@@ -5,9 +5,9 @@
 
 ![Logo](resources/logo.png)
 
-## What's this?
+## What is this?
 
-**gsheet-resources** is a tool to export/convert the strings in a Google Sheet into resource files for Android apps.
+**gsheet-resources** is a tool that allows you to export/convert the strings in a Google Sheet into resource files for Android and Kotlin Multiplatform apps.
 
 Storing the translations of an app in a Google Sheet is simple and easy.
  - It allows customers to change the strings of an app without having to learn any "real" translation tools (e.g. to edit PO files)
@@ -62,12 +62,36 @@ Additionally, you must go into the share settings of the Google Sheet and make s
 The configuration of the plugin is done via the `gsheetresources` block in your module's build file e.g. `app/build.gradle.kts` file, like so:
 ```kotlin
 gsheetresources {
-    sheetId = "<SHEET_ID>"
+    // The unique identifier of your Google Sheet. This is part of the sheet URL.
+    // Required
+    sheetId = "sheet_id"
+    
+    // Path to the resource directory. Relative to the module.
+    // Optional. Defaults to "src/main/res".
+    resourceDir = "path/to/resource/dir"
+
+    // Name of the generated resource file. Should have the extension ".xml".
+    // Optional. Defaults to "strings_generated.xml".
+    outputFilename = "path/to/resource/dir"
 }
 ```
 
-with `SHEET_ID` being the unique identifier of your Google Sheet. This is part of the sheet URL. E.g for this [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM/edit?gid=0#gid=0)
-it is `1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM`.
+#### Typical configuration for Android 
+
+```kotlin
+gsheetresources {
+    sheetId = "sheet_id"
+}
+```
+
+#### Typical configuration for Kotlin Multiplatform
+
+```kotlin
+gsheetresources {
+    sheetId = "sheet_id"
+    resourceDir = "src/commonMain/composeResources"
+}
+```
 
 ### Execution
 
@@ -82,7 +106,7 @@ I recommend to add the generated files into version control. You can rerun the a
 
 ## Sample
 
-This is a [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM/edit?gid=0#gid=0).
+This [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM/edit?gid=0#gid=0)...
 
 | ID                    | en                | nl                | nl-rBE    |
 |-----------------------| ----------------- | ----------------- | --------- |
@@ -95,7 +119,15 @@ This is a [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9
 | placeholder_string    | Value: %1$s       | Waarde: %1$s      |           |
 | placeholder_numbers   | From %1$d to %2$d | Van %1$d tot %2$d |           |
 
-This results in the following resource files:
+...with this configuration...
+
+```kotlin
+gsheetresources {
+    sheetId = "1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM"
+}
+```
+
+...results in the following resource files:
  - [src/main/res/values/strings_generated.xml](https://github.com/litrik/gsheet-resources/blob/main/test-module/src/main/res/values/strings_generated.xml)
  - [src/main/res/values-nl/strings_generated.xml](https://github.com/litrik/gsheet-resources/blob/main/test-module/src/main/res/values-nl/strings_generated.xml)
  - [src/main/res/values-nl-rBE/strings_generated.xml](https://github.com/litrik/gsheet-resources/blob/main/test-module/src/main/res/values-nl-rBE/strings_generated.xml)
