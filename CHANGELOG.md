@@ -14,6 +14,12 @@
 
 ### Security
 
+## 0.3.0 - 2025-09-08
+
+### Added
+
+- Made `tabId` configurable
+
 ## 0.2.0 - 2025-09-06
 
 ### Added

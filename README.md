@@ -66,13 +66,17 @@ gsheetresources {
     // Required
     sheetId = "sheet_id"
     
+    // The unique identifier of the tab in your Google Sheet. This is the 'gid' parameter of the sheet URL.
+    // Optional. Defaults to "0".
+    tabId = "tab_id"
+    
     // Path to the resource directory. Relative to the module.
     // Optional. Defaults to "src/main/res".
     resourceDir = "path/to/resource/dir"
 
     // Name of the generated resource file. Should have the extension ".xml".
     // Optional. Defaults to "strings_generated.xml".
-    outputFilename = "path/to/resource/dir"
+    outputFilename = "output.xml"
 }
 ```
 
