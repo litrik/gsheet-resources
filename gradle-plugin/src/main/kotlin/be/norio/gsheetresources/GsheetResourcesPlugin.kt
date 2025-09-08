@@ -39,6 +39,7 @@ open class GsheetResourcesPlugin : Plugin<Project> {
             it.description = "Generate string resource files from a Google Sheet."
 
             it.sheetId.set(ext.sheetId.get())
+            it.tabId.set(ext.tabId.orNull ?: GoogleSheet.DEFAULT_TAB_ID)
 
             val resourceDir = ext.resourceDir.orNull ?: AndroidWriter.DEFAULT_RESOURCE_DIR
             it.resourceDir.set(target.layout.projectDirectory.dir(resourceDir).asFile.path)

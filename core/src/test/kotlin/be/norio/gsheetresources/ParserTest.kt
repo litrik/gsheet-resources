@@ -8,7 +8,9 @@ class ParserTest {
 
     val idButton = "button_save"
 
-    private fun parseFile(filename: String) = Parser().parse(Util.readFile(File("src/test/resources/$filename")))
+    private fun parseFile(filename: String) = File("src/test/resources/$filename")
+        .readText()
+        .let { Parser().parse(it) }
 
     @Test
     fun `Parse basic CSV`() {

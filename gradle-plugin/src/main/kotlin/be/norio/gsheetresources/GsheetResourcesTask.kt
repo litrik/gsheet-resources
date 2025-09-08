@@ -33,6 +33,9 @@ open class GsheetResourcesTask : DefaultTask() {
     val sheetId = project.objects.property(String::class.java)
 
     @get:Input
+    val tabId = project.objects.property(String::class.java)
+
+    @get:Input
     val resourceDir = project.objects.property(String::class.java)
 
     @get:Input
@@ -40,11 +43,9 @@ open class GsheetResourcesTask : DefaultTask() {
 
     @TaskAction
     fun generateTranslations() {
-        val translations = Parser().parse(Util.readGoogleSheet(sheetId.get()))
-        AndroidWriter(
-            resourceDir = resourceDir.get(),
-            outputFilename = outputFilename.get(),
-        ).writeAllLanguages(translations)
+        GoogleSheet(sheetId.get(), tabId.get()).readText()
+            .let { Parser().parse(it) }
+            .let { AndroidWriter(resourceDir.get(), outputFilename.get()).writeAllLanguages(it) }
     }
 
 }

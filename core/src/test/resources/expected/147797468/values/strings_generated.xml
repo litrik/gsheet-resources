@@ -1,0 +1,13 @@
+<resources>
+<string name="accent_e">é</string>
+<string name="accent_i">ï</string>
+<string name="accent_n">ñ</string>
+<string name="euro">€</string>
+<string name="label_email">Email</string>
+<string name="label_password">Password</string>
+<string name="settings">Settings</string>
+<string name="unicode_airplane">✈</string>
+<string name="unicode_for_all">∀</string>
+<string name="unicode_middle_dot">·</string>
+<string name="unicode_rightwards_arrow">→</string>
+</resources>

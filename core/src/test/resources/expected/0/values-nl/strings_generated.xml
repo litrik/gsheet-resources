@@ -1,0 +1,10 @@
+<resources>
+<string name="ampersand">Jij &amp; ik</string>
+<string name="button_cancel">Annuleren</string>
+<string name="button_save">Bewaren</string>
+<string name="ellipsis">Meer…</string>
+<string name="fries">Friet</string>
+<string name="hello">Hallo Wereld!</string>
+<string name="placeholder_numbers">Van %1$d tot %2$d</string>
+<string name="placeholder_string">Waarde: %1$s</string>
+</resources>

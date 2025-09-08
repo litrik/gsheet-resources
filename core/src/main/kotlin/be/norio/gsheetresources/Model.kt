@@ -24,6 +24,7 @@
 
 package be.norio.gsheetresources
 
+import java.net.URI
 import kotlin.collections.flatten
 
 typealias ResourceId = String
@@ -36,4 +37,15 @@ data class Translations(
     fun getOrNull(resourceId: ResourceId, languageId: LanguageId): String? = entries[resourceId]?.get(languageId)
 
     fun getLanguages(): Set<LanguageId> = entries.entries.map { it.value.keys }.flatten().toSet()
+}
+
+data class GoogleSheet(
+    val sheetId: String,
+    val tabId: String,
+) {
+    fun readText(): String = URI("https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=${tabId}").toURL().readText()
+
+    companion object {
+        const val DEFAULT_TAB_ID = "0"
+    }
 }
