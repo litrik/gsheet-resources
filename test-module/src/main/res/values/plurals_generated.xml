@@ -1,0 +1,7 @@
+<resources>
+<plurals name="items">
+  <item quantity="one">@string/items_one</item>
+  <item quantity="other">@string/items_other</item>
+  <item quantity="zero">@string/items_zero</item>
+</plurals>
+</resources>

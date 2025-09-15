@@ -5,6 +5,10 @@
 <string name="ellipsis">Meer…</string>
 <string name="fries">Friet</string>
 <string name="hello">Hallo Wereld!</string>
+<string name="items_no_plural">Geen veelvoud</string>
+<string name="items_one">1 item</string>
+<string name="items_other">%1$d items</string>
+<string name="items_zero">Geen items</string>
 <string name="placeholder_numbers">Van %1$d tot %2$d</string>
 <string name="placeholder_string">Waarde: %1$s</string>
 </resources>

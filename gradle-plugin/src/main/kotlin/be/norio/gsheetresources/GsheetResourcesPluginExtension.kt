@@ -31,4 +31,5 @@ interface GsheetResourcesPluginExtension {
     val tabId: Property<String>
     val resourceDir: Property<String>
     val outputFilename: Property<String>
+    val pluralsOutputFilename: Property<String>
 }

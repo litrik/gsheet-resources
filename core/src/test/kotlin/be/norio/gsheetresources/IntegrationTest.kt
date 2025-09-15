@@ -12,6 +12,7 @@ class IntegrationTest {
         mapOf(
             GoogleSheet.DEFAULT_TAB_ID to listOf(
                 "values/strings_generated.xml",
+                "values/plurals_generated.xml",
                 "values-nl/strings_generated.xml",
                 "values-nl-rBE/strings_generated.xml",
             ),
@@ -25,7 +26,7 @@ class IntegrationTest {
         val outputPath = createTempDirectory()
         GoogleSheet("1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM", tabId).readText()
             .let { Parser().parse(it) }
-            .let { AndroidWriter(outputPath.toAbsolutePath().toString()).writeAllLanguages(it) }
+            .let { AndroidWriter(outputPath.toAbsolutePath().toString()).writeAll(it) }
 
         files.onEach {
             val actualFile = outputPath.resolve(it).toFile()

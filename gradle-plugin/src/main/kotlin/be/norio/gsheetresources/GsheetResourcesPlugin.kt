@@ -44,8 +44,11 @@ open class GsheetResourcesPlugin : Plugin<Project> {
             val resourceDir = ext.resourceDir.orNull ?: AndroidWriter.DEFAULT_RESOURCE_DIR
             it.resourceDir.set(target.layout.projectDirectory.dir(resourceDir).asFile.path)
 
-            val outputFilename = ext.outputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME
-            it.outputFilename.set(outputFilename)
+            val outputFilenameStrings = ext.outputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME_STRINGS
+            it.outputFilenameStrings.set(outputFilenameStrings)
+
+            val outputFilenamePlurals = ext.pluralsOutputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME_PLURALS
+            it.outputFilenamePlurals.set(outputFilenamePlurals)
         }
     }
 

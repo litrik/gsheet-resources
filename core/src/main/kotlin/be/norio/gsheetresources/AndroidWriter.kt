@@ -28,24 +28,47 @@ import java.io.File
 
 class AndroidWriter(
     private val resourceDir: String = DEFAULT_RESOURCE_DIR,
-    private val outputFilename: String = DEFAULT_OUTPUT_FILENAME,
+    private val outputFilename: String = DEFAULT_OUTPUT_FILENAME_STRINGS,
+    private val pluralsOutputFilename: String = DEFAULT_OUTPUT_FILENAME_PLURALS,
 ) {
 
-    fun writeAllLanguages(translations: Translations) {
+    fun writeAll(translations: Translations) {
+        writeStrings(translations)
+        writePlurals(translations)
+    }
+
+    fun writeStrings(translations: Translations) {
         translations.getLanguages().forEachIndexed { index, language ->
             val outDir = File(resourceDir, if (index == 0) "values" else "values-${language}")
             outDir.mkdirs()
             val outFile = File(outDir, outputFilename)
             print("Generating $language string resources in ${outFile}...")
-            val entriesWritten = writeLanguage(
+            val entriesWritten = writeStringLanguage(
                 outFile = outFile,
-                entries = translations.entries.keys.mapNotNull { translationId -> translations.getOrNull(translationId, language)?.let { translationId to it } }.toMap()
+                entries = translations.strings.keys.mapNotNull { translationId -> translations.getStringOrNull(translationId, language)?.let { translationId to it } }.toMap()
             )
-            println(entriesWritten)
+            println(" $entriesWritten generated.")
         }
     }
 
-    private fun writeLanguage(outFile: File, entries: Map<ResourceId, String>): Int {
+    fun writePlurals(translations: Translations) {
+        if (translations.plurals.isNotEmpty()) {
+            val outDir = File(resourceDir, "values")
+            outDir.mkdirs()
+            val outFile = File(outDir, pluralsOutputFilename)
+            print("Generating plural resources in ${outFile}...")
+            outFile.writeText("<resources>\n")
+            translations.plurals.onEach { (resourceId, plurals) ->
+                outFile.appendText("<plurals name=\"$resourceId\">\n")
+                plurals.onEach { (type, translationId) -> outFile.appendText("  <item quantity=\"$type\">@string/$translationId</item>\n") }
+                outFile.appendText("</plurals>\n")
+            }
+            outFile.appendText("</resources>\n")
+            println(" ${translations.plurals.size} generated.")
+        }
+    }
+
+    private fun writeStringLanguage(outFile: File, entries: Map<ResourceId, String>): Int {
         outFile.writeText("<resources>\n")
         entries.onEach { outFile.appendText("<string name=\"${it.key}\">${escapeValue(it.value)}</string>\n") }
         outFile.appendText("</resources>\n")
@@ -66,7 +89,8 @@ class AndroidWriter(
 
     companion object {
         const val DEFAULT_RESOURCE_DIR = "src/main/res"
-        const val DEFAULT_OUTPUT_FILENAME = "strings_generated.xml"
+        const val DEFAULT_OUTPUT_FILENAME_STRINGS = "strings_generated.xml"
+        const val DEFAULT_OUTPUT_FILENAME_PLURALS = "plurals_generated.xml"
     }
 
 }

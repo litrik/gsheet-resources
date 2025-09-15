@@ -31,20 +31,33 @@ class Parser() {
     val idRegex = "\\S+".toRegex()
     val localeRegex = "^[a-z]{2}(-r[A-Z]{2})?$".toRegex()
 
-    fun parse(csvString: String): Translations = Translations(
-        entries = csvReader()
+    fun parse(csvString: String): Translations {
+        val rows = csvReader()
             .readAllWithHeader(csvString)
             .filter { idRegex.matches(it.values.first()) }
             .sortedBy { it.keys.first() }
-            .map { row ->
-                row.values.first() to (row.keys
-                    .drop(1)
-                    .filter { localeRegex.matches(it) }
-                    .mapNotNull { row[it]?.takeIf { it.isNotBlank() }?.let { value -> it to value } })
-                    .toMap()
-            }
-            .sortedBy { it.first }
-            .toMap()
-    )
+        return Translations(
+            strings = rows
+                .map { row ->
+                    row.values.first() to (row.keys
+                        .drop(1)
+                        .filter { localeRegex.matches(it) }
+                        .mapNotNull { row[it]?.takeIf { it.isNotBlank() }?.let { value -> it to value } })
+                        .toMap()
+                }
+                .sortedBy { it.first }
+                .toMap(),
+            plurals = rows
+                .map { row -> row.values.first() }
+                .groupBy { id -> id.substringBeforeLast('_') }
+                .map { (pluralId, stringIds) -> pluralId to stringIds.filter { plurals.contains(it.substringAfterLast('_')) } }
+                .filter { (_, stringIds) -> stringIds.size > 1 }
+                .associate { (pluralId, stringIds) ->
+                    pluralId to stringIds
+                        .sortedBy { it }
+                        .associateBy { it.substringAfterLast('_') }
+                }
+        )
+    }
 
 }

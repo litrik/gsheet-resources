@@ -29,14 +29,25 @@ import kotlin.collections.flatten
 
 typealias ResourceId = String
 typealias LanguageId = String
+typealias Plural = String
+
+val plurals = listOf(
+    "zero",
+    "one",
+    "two",
+    "few",
+    "many",
+    "other",
+)
 
 data class Translations(
-    val entries: Map<ResourceId, Map<LanguageId, String>>,
+    val strings: Map<ResourceId, Map<LanguageId, String>>,
+    val plurals: Map<ResourceId, Map<Plural, ResourceId>>,
 ) {
 
-    fun getOrNull(resourceId: ResourceId, languageId: LanguageId): String? = entries[resourceId]?.get(languageId)
+    fun getStringOrNull(resourceId: ResourceId, languageId: LanguageId): String? = strings[resourceId]?.get(languageId)
 
-    fun getLanguages(): Set<LanguageId> = entries.entries.map { it.value.keys }.flatten().toSet()
+    fun getLanguages(): Set<LanguageId> = strings.entries.map { it.value.keys }.flatten().toSet()
 }
 
 data class GoogleSheet(

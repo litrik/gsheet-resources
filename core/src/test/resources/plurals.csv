@@ -1,0 +1,7 @@
+"id","en"
+"item_one","1 item"
+"item_other","%1$d items"
+"item_zero","No items"
+"item_noplural","Not a plural"
+"other","Other"
+"single_other","One string is not a plural"

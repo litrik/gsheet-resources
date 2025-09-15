@@ -5,6 +5,10 @@
 <string name="ellipsis">More…</string>
 <string name="fries">French fries</string>
 <string name="hello">Hello World!</string>
+<string name="items_no_plural">Not a plural</string>
+<string name="items_one">1 item</string>
+<string name="items_other">%1$d items</string>
+<string name="items_zero">No items</string>
 <string name="placeholder_numbers">From %1$d to %2$d</string>
 <string name="placeholder_string">Value: %1$s</string>
 </resources>
