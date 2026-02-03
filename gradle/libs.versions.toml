@@ -4,7 +4,7 @@ tapmoc = "0.4.0"                        # https://github.com/GradleUp/Tapmoc/rel
 csv = "1.10.0"                          # https://github.com/jsoizo/kotlin-csv/releases
 gradlePluginPublish = "2.0.0"           # https://plugins.gradle.org/plugin/com.gradle.plugin-publish
 junit = "4.13.2"                        # https://docs.junit.org/current/release-notes/index.html#release-notes
-kotlin = "2.2.20"                       # https://kotlinlang.org/docs/releases.html
+kotlin = "2.3.0"                        # https://kotlinlang.org/docs/releases.html
 mavenPublish = "0.36.0"                 # https://github.com/vanniktech/gradle-maven-publish-plugin/releases
 
 [libraries]
