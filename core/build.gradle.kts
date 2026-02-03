@@ -1,10 +1,10 @@
 plugins {
     alias(libs.plugins.kotlinJvm)
     alias(libs.plugins.mavenPublish)
-    alias(libs.plugins.compatPatrouille)
+    alias(libs.plugins.tapmoc)
 }
 
-compatPatrouille {
+tapmoc {
     java(17)
     kotlin(libs.versions.kotlin.get())
 }

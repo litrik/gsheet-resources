@@ -5,10 +5,10 @@ plugins {
     `java-gradle-plugin`
     alias(libs.plugins.gradlePluginPublish)
     alias(libs.plugins.mavenPublish)
-    alias(libs.plugins.compatPatrouille)
+    alias(libs.plugins.tapmoc)
 }
 
-compatPatrouille {
+tapmoc {
     java(17)
     kotlin(libs.versions.kotlin.get())
 }
