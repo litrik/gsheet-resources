@@ -91,6 +91,7 @@ class AndroidWriter(
         .replace("'", "\\'")
         .replace("&", "&amp;")
         .replace("...", "…")
+        .replace("\n", "\\n")
         .run {
             if (contains('<')) {
                 "<![CDATA[$this]]>"

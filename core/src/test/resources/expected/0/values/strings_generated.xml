@@ -16,6 +16,7 @@
 <string name="items_one">1 item</string>
 <string name="items_other">%1$d items</string>
 <string name="items_zero">No items</string>
+<string name="multiple_lines">First line\nSecond line\nThird line</string>
 <string name="placeholder_numbers">From %1$d to %2$d</string>
 <string name="placeholder_string">Value: %1$s</string>
 </resources>

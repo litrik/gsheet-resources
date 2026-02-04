@@ -131,20 +131,21 @@ I recommend to add the generated files into version control. You can rerun the a
 
 This [sample Google Sheet](https://docs.google.com/spreadsheets/d/1L6EsUDM9qnsQjrT2Y16eXRzMP3v5Njp2gckwY-oZpcM/edit?gid=0#gid=0)...
 
-| ID                  | en                | nl                | nl-rBE    |
-|---------------------|-------------------|-------------------| --------- |
-| hello               | Hello World!      | Hallo Wereld!     |           |
-| button_save         | Save              | Bewaren           |           |
-| button_cancel       | Cancel            | Annuleren         |           |
-| ellipsis            | More...           | Meer...           |           |
-| ampersand           | You & Me          | Jij & ik          |           |
-| fries               | French fries      | Friet             | Fritten   |
-| placeholder_string  | Value: %1$s       | Waarde: %1$s      |           |
-| placeholder_numbers | From %1$d to %2$d | Van %1$d tot %2$d |           |
-| items_zero          | No items          | Geen items        |           |
-| items_one           | 1 item            | 1 item            |           |
-| items_other         | %1$d items        | %1$d items        |           |
-| items_no_plural     | Not a plural      | Geen veelvoud     |           |
+| ID                  | en                                        | nl                                         | nl-rBE    |
+|---------------------|-------------------------------------------|--------------------------------------------| --------- |
+| hello               | Hello World!                              | Hallo Wereld!                              |           |
+| button_save         | Save                                      | Bewaren                                    |           |
+| button_cancel       | Cancel                                    | Annuleren                                  |           |
+| ellipsis            | More...                                   | Meer...                                    |           |
+| ampersand           | You & Me                                  | Jij & ik                                   |           |
+| fries               | French fries                              | Friet                                      | Fritten   |
+| placeholder_string  | Value: %1$s                               | Waarde: %1$s                               |           |
+| placeholder_numbers | From %1$d to %2$d                         | Van %1$d tot %2$d                          |           |
+| items_zero          | No items                                  | Geen items                                 |           |
+| items_one           | 1 item                                    | 1 item                                     |           |
+| items_other         | %1$d items                                | %1$d items                                 |           |
+| items_no_plural     | Not a plural                              | Geen veelvoud                              |           |
+| multiple_lines	   | First line<br/>Second line<br/>Third line | Eerste lijn<br/>Tweede lijn<br/>Derde lijn |           | 
 
 ...with this configuration...
 
