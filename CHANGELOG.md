@@ -1,18 +1,10 @@
 # Changelog
 
-## Unreleased
-
-### Added
+## 0.5.0 - 2026-02-04
 
 ### Changed
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
+- Newlines are now escaped using `\n` (#6)
 
 ## 0.4.0 - 2025-09-16
 
