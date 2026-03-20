@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0 - 2026-03-20
+
+### Added
+
+- Support dereferencing plurals to make them work in KMP projects (fixes #7)
+
 ## 0.5.0 - 2026-02-04
 
 ### Changed
