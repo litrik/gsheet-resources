@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.tapmoc) apply false
 }
 
-val currentVersion = "0.5.0"
+val currentVersion = "0.6.0"
 version = buildString {
     append(currentVersion)
 }
