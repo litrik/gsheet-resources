@@ -32,4 +32,5 @@ interface GsheetResourcesPluginExtension {
     val resourceDir: Property<String>
     val outputFilename: Property<String>
     val pluralsOutputFilename: Property<String>
+    val dereferencePlurals: Property<Boolean>
 }

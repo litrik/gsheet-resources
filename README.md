@@ -83,6 +83,10 @@ gsheetresources {
     // Name of the generated plural resource file. Should have the extension ".xml".
     // Optional. Defaults to "plurals_generated.xml".
     outputFilename = "plurals.xml"
+
+    // Indicates that plurals should contain the translated strings themselves, not simply a reference to it.
+    // Optional. Defaults to true when the Kotlin Multiplatform plugin is applied to the project, false otherwise.
+    dereferencePlurals = true
 }
 ```
 
@@ -108,6 +112,10 @@ gsheetresources {
 A file with plural resources will be generated automatically if there are any IDs that follow these conventions:
 1. The ID ends with an underscore, followed by one the valid quantity strings: `zero`, `one`, `two`, `few`, `many` or `other`.
 2. There are multiple IDs with the same beginning, e.g. `items_one` and `items_other`.
+
+If the Kotlin Multiplatform plugin ("org.jetbrains.kotlin.multiplatform") is applied to the project, multiple plurals files will be generated with the actual translated strings in them.
+If not, only a single plurals file will be generated with references to the translated strings.
+You can override this behavior with the `dereferencePlurals` configuration parameter.
 
 The [sample](#sample) contains example plurals.
 

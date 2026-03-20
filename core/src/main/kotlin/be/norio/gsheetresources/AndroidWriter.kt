@@ -30,11 +30,16 @@ class AndroidWriter(
     private val resourceDir: String = DEFAULT_RESOURCE_DIR,
     private val outputFilename: String = DEFAULT_OUTPUT_FILENAME_STRINGS,
     private val pluralsOutputFilename: String = DEFAULT_OUTPUT_FILENAME_PLURALS,
+    private val dereferencePlurals: Boolean = false,
 ) {
 
     fun writeAll(translations: Translations) {
         writeStrings(translations)
-        writePlurals(translations)
+        if (dereferencePlurals) {
+            writeDereferencedPlurals(translations)
+        } else {
+            writePlurals(translations)
+        }
     }
 
     fun writeStrings(translations: Translations) {
@@ -77,6 +82,37 @@ class AndroidWriter(
             }
             outFile.appendText("</resources>\n")
             println(" ${translations.plurals.size} generated.")
+        }
+    }
+
+    fun writeDereferencedPlurals(translations: Translations) {
+        if (translations.plurals.isNotEmpty()) {
+            translations.getLanguages().forEachIndexed { index, language ->
+                val outDir = File(resourceDir, if (index == 0) "values" else "values-${language}")
+                outDir.mkdirs()
+                val outFile = File(outDir, pluralsOutputFilename)
+                writeHeader(outFile)
+                print("Generating $language plural resources in ${outFile}...")
+                outFile.appendText("<resources>\n")
+
+                translations.plurals.onEach { (resourceId, plurals) ->
+                    val lines = plurals.mapNotNull { (type, translationId) ->
+                        translations
+                            .strings[translationId]
+                            ?.get(language)
+                            ?.let { escapeValue(it) }
+                            ?.let { "  <item quantity=\"$type\">${translations.strings[translationId]?.get(language)}</item>\n" }
+                    }
+                    if (lines.isNotEmpty()) {
+                        outFile.appendText("<plurals name=\"$resourceId\">\n")
+                        lines.forEach { outFile.appendText(it) }
+                        outFile.appendText("</plurals>\n")
+                    }
+                }
+
+                outFile.appendText("</resources>\n")
+                println(" ${translations.plurals.size} generated.")
+            }
         }
     }
 

@@ -44,6 +44,9 @@ open class GsheetResourcesTask : DefaultTask() {
     @get:Input
     val outputFilenamePlurals = project.objects.property(String::class.java)
 
+    @get:Input
+    val dereferencePlurals = project.objects.property(Boolean::class.java)
+
     @TaskAction
     fun generateTranslations() {
         GoogleSheet(sheetId.get(), tabId.get()).readText()
@@ -52,6 +55,7 @@ open class GsheetResourcesTask : DefaultTask() {
                 resourceDir = resourceDir.get(),
                 outputFilename = outputFilenameStrings.get(),
                 pluralsOutputFilename = outputFilenamePlurals.get(),
+                dereferencePlurals = dereferencePlurals.get(),
             ).writeAll(it) }
     }
 

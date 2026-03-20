@@ -49,6 +49,10 @@ open class GsheetResourcesPlugin : Plugin<Project> {
 
             val outputFilenamePlurals = ext.pluralsOutputFilename.orNull ?: AndroidWriter.DEFAULT_OUTPUT_FILENAME_PLURALS
             it.outputFilenamePlurals.set(outputFilenamePlurals)
+
+            val isKmpApplied = target.plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")
+            val dereferencePlurals = ext.dereferencePlurals.getOrElse(isKmpApplied)
+            it.dereferencePlurals.set(dereferencePlurals)
         }
     }
 
